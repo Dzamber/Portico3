@@ -20,6 +20,8 @@ public class PatientFederate {
     private RTIambassador rtiamb;
     private PatientAmbassador fedamb;
     private final double timeStep           = 10.0;
+    private int patientHlaHandle;
+    static int patientAmountCurrent = 0;
 
     public void runFederate() throws RTIexception{
         rtiamb = RtiFactoryFactory.getRtiFactory().createRtiAmbassador();
@@ -65,13 +67,23 @@ public class PatientFederate {
         enableTimePolicy();
 
         publishAndSubscribe();
-
+        registerPatientObject();
         while (fedamb.running) {
             advanceTime(randomTime());
             sendInteraction(fedamb.federateTime + fedamb.federateLookahead);
             rtiamb.tick();
         }
 
+    }
+
+    private void registerPatientObject() throws RTIexception {
+        int classHandle = rtiamb.getObjectClassHandle("ObjectRoot.Patient");
+        int patientHandle    = rtiamb.getAttributeHandle( "patientNumber", classHandle );
+        AttributeHandleSet attributes =
+                RtiFactoryFactory.getRtiFactory().createAttributeHandleSet();
+        attributes.add( patientHandle );
+        rtiamb.publishObjectClass(classHandle, attributes);
+        this.patientHlaHandle = rtiamb.registerObjectInstance(classHandle);
     }
 
     private void waitForUser()
@@ -108,12 +120,12 @@ public class PatientFederate {
             rtiamb.tick();
         }
     }
-    static int id = 0;
+
     private void sendInteraction(double timeStep) throws RTIexception {
         SuppliedParameters parameters =
                 RtiFactoryFactory.getRtiFactory().createSuppliedParameters();
-        byte[] quantity = EncodingHelpers.encodeInt(id);
-        id++;
+        byte[] quantity = EncodingHelpers.encodeInt(patientAmountCurrent);
+        patientAmountCurrent++;
         int interactionHandle = rtiamb.getInteractionClassHandle("InteractionRoot.AddPatientQue");
 
         int quantityHandle = rtiamb.getParameterHandle( "patientNumber", interactionHandle );
@@ -145,6 +157,19 @@ public class PatientFederate {
     private double randomTime() {
         Random r = new Random();
         return 1 +(9 * r.nextDouble());
+    }
+
+    private void updateHLAObject(double time) throws RTIexception{
+        SuppliedAttributes attributes =
+                RtiFactoryFactory.getRtiFactory().createSuppliedAttributes();
+
+        int classHandle = rtiamb.getObjectClass(patientHlaHandle);
+        int stockHandle = rtiamb.getAttributeHandle( "Patient", classHandle );
+        byte[] stockValue = EncodingHelpers.encodeInt(patientAmountCurrent);
+
+        attributes.add(stockHandle, stockValue);
+        LogicalTime logicalTime = convertTime( time );
+        rtiamb.updateAttributeValues( patientHlaHandle, attributes, "actualize patient".getBytes(), logicalTime );
     }
 
     private LogicalTime convertTime( double time )

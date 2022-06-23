@@ -102,6 +102,10 @@ public class QueFederate {
                 log("Updating stock at time: " + timeToAdvance);
                 updateHLAObject(timeToAdvance);
                 fedamb.federateTime = timeToAdvance;
+                if(this.queArrayListDoctors.size() > 0 && this.queArrayListPatients.size() > 0){
+                    this.queArrayListPatients.remove(0);
+                    this.queArrayListDoctors.remove(0);
+                }
             }
 
             rtiamb.tick();
@@ -148,18 +152,8 @@ public class QueFederate {
     }
 
     private void updateHLAObject(double time) throws RTIexception{
-        /*
         SuppliedAttributes attributes =
                 RtiFactoryFactory.getRtiFactory().createSuppliedAttributes();
-
-        int classHandle = rtiamb.getObjectClass(patientHlaHandle);
-        int patientListHandle = rtiamb.getAttributeHandle( "patientNumber", classHandle );
-        byte[] patientList = EncodingHelpers.encodeString(queArrayListPatients.toString());
-        //EncodingHelpers.encodeString();
-
-        attributes.add(patientListHandle, patientList);
-        LogicalTime logicalTime = convertTime( time );
-        rtiamb.updateAttributeValues(patientHlaHandle, attributes, "actualize stock".getBytes(), logicalTime );*/
     }
 
     private void advanceTime( double timeToAdvance ) throws RTIexception {

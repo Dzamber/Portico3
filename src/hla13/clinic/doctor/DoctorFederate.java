@@ -22,7 +22,9 @@ public class DoctorFederate {
     private RTIambassador rtiamb;
     private DoctorAmbassador fedamb;
     private final double timeStep           = 10.0;
-
+    private int doctorHlaHandle;
+    static int doctorCurrentAmount = 0;
+    static int doctorMaxAmount = 10;
     public void runFederate() throws RTIexception {
         rtiamb = RtiFactoryFactory.getRtiFactory().createRtiAmbassador();
 
@@ -68,14 +70,44 @@ public class DoctorFederate {
 
         publishAndSubscribe();
 
+        registerDoctorObject();
+
         while (fedamb.running) {
             advanceTime(randomTime());
-            sendInteraction(fedamb.federateTime + fedamb.federateLookahead);
+            if(doctorCurrentAmount < doctorMaxAmount){
+                sendInteraction(fedamb.federateTime + fedamb.federateLookahead);
+                updateHLAObject(fedamb.federateTime + fedamb.federateLookahead);
+            }
             rtiamb.tick();
         }
 
     }
 
+    private void updateHLAObject(double time) throws RTIexception{
+        SuppliedAttributes attributes =
+                RtiFactoryFactory.getRtiFactory().createSuppliedAttributes();
+
+        int classHandle = rtiamb.getObjectClass(doctorHlaHandle);
+        int stockHandle = rtiamb.getAttributeHandle( "doctorNumber", classHandle );
+        byte[] stockValue = EncodingHelpers.encodeInt(doctorCurrentAmount);
+
+        attributes.add(stockHandle, stockValue);
+        LogicalTime logicalTime = convertTime( time );
+        rtiamb.updateAttributeValues( doctorHlaHandle, attributes, "actualize doctor".getBytes(), logicalTime );
+        //rtiamb.getAttribute
+    }
+
+
+    private void registerDoctorObject() throws RTIexception {
+        int classHandle = rtiamb.getObjectClassHandle("ObjectRoot.Doctor");
+        int doctorHandle    = rtiamb.getAttributeHandle( "doctorNumber", classHandle );
+        AttributeHandleSet attributes =
+                RtiFactoryFactory.getRtiFactory().createAttributeHandleSet();
+        attributes.add( doctorHandle );
+        rtiamb.publishObjectClass(classHandle, attributes);
+        this.doctorHlaHandle = rtiamb.registerObjectInstance(classHandle);
+
+    }
     private void waitForUser()
     {
         log( " >>>>>>>>>> Press Enter to Continue <<<<<<<<<<" );
@@ -110,14 +142,13 @@ public class DoctorFederate {
             rtiamb.tick();
         }
     }
-    static int id = 0;
+
     private void sendInteraction(double timeStep) throws RTIexception {
         SuppliedParameters parameters =
                 RtiFactoryFactory.getRtiFactory().createSuppliedParameters();
-        byte[] quantity = EncodingHelpers.encodeInt(id);
-        id++;
+        byte[] quantity = EncodingHelpers.encodeInt(doctorCurrentAmount);
+        doctorCurrentAmount++;
         int interactionHandle = rtiamb.getInteractionClassHandle("InteractionRoot.AddDoctorQue");
-
         int quantityHandle = rtiamb.getParameterHandle( "doctorNumber", interactionHandle );
         LogicalTime time = convertTime( timeStep );
 
