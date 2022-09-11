@@ -4,6 +4,7 @@ package hla13.clinic.que;
 import hla.rti.*;
 import hla.rti.jlc.EncodingHelpers;
 import hla.rti.jlc.RtiFactoryFactory;
+import hla13.clinic.ExternalEvent;
 import org.portico.impl.hla13.types.DoubleTime;
 import org.portico.impl.hla13.types.DoubleTimeInterval;
 
@@ -22,7 +23,7 @@ public class QueFederate {
     private final double timeStep           = 10.0;
     private ArrayList<Integer> queArrayListPatients = new ArrayList<>();
     private ArrayList<Integer> queArrayListDoctors = new ArrayList<>();
-    private int patientHlaHandle;
+    private int queHlaHandle;
 
 
     public void runFederate() throws Exception {
@@ -84,10 +85,10 @@ public class QueFederate {
                             log(" ADDpatient");
                             this.addPatientQue(externalEvent.getPersonNumber());
                             break;
-                        case GET:
-                            externalEvent.getPersonNumber();
-                            this.getPatientQue();
-                            break;
+                        //case GET:
+                        //    externalEvent.getPersonNumber();
+                        //    this.getPatientQue();
+                        //    break;
                         case ADDdoctor:
                             log(" ADDdoctor");
                             this.addDoctorQue(externalEvent.getPersonNumber());
@@ -99,15 +100,15 @@ public class QueFederate {
 
             if(fedamb.grantedTime == timeToAdvance) {
                 timeToAdvance += fedamb.federateLookahead;
-                log("Updating stock at time: " + timeToAdvance);
-                updateHLAObject(timeToAdvance);
                 fedamb.federateTime = timeToAdvance;
+                log("Current time :" + fedamb.federateTime);
                 if(this.queArrayListDoctors.size() > 0 && this.queArrayListPatients.size() > 0){
-                    this.queArrayListPatients.remove(0);
-                    this.queArrayListDoctors.remove(0);
+                    log("Patient: " + this.queArrayListPatients.get(0) + " is being treated by doctor: " + this.queArrayListDoctors.get(0));
+                    //log("Removing doctor: " + );
+                    sendInteractionGetDoctor(fedamb.federateTime + fedamb.federateLookahead);
+                    updateHLAObject(timeToAdvance);
                 }
             }
-
             rtiamb.tick();
         }
 
@@ -123,7 +124,7 @@ public class QueFederate {
         log("Added "+ doctorNumber + " at time: "+ fedamb.federateTime +", current doctor list size: " + this.queArrayListDoctors.size());
     }
 
-    public void getPatientQue() {
+    /*public void getPatientQue() {
         int patientNumberToReturn = -1;
         if(this.queArrayListPatients.size() < 0) {
             log("Que empty");
@@ -134,7 +135,7 @@ public class QueFederate {
             log("Removed "+ patientNumberToReturn + " at time: "+ fedamb.federateTime +", current patient list size:  " + this.queArrayListPatients.size());
 
         }
-    }
+    }*/
 
     private void waitForUser()
     {
@@ -154,6 +155,10 @@ public class QueFederate {
     private void updateHLAObject(double time) throws RTIexception{
         SuppliedAttributes attributes =
                 RtiFactoryFactory.getRtiFactory().createSuppliedAttributes();
+        //int classHandle = rtiamb.getObjectClass(queHlaHandle);
+        //int doctorNumberHandle = rtiamb.getAttributeHandle( "doctorNumber", classHandle );
+        //int doctorNumber = queArrayListDoctors.size();
+        //attributes.add();
     }
 
     private void advanceTime( double timeToAdvance ) throws RTIexception {
@@ -168,14 +173,6 @@ public class QueFederate {
     }
 
     private void publishAndSubscribe() throws RTIexception {
-        int classHandle = rtiamb.getObjectClassHandle("ObjectRoot.Patient");
-        int patientNumber    = rtiamb.getAttributeHandle( "patientNumber", classHandle );
-
-        AttributeHandleSet attributes =
-                RtiFactoryFactory.getRtiFactory().createAttributeHandleSet();
-        attributes.add( patientNumber );
-
-        rtiamb.publishObjectClass(classHandle, attributes);
 
         int addPatientHandle = rtiamb.getInteractionClassHandle( "InteractionRoot.AddPatientQue" );
         fedamb.addPatientHandle = addPatientHandle;
@@ -186,13 +183,32 @@ public class QueFederate {
         fedamb.addDoctorHandle = addDoctorHandle;
         rtiamb.subscribeInteractionClass( addDoctorHandle );
 
+        int doctorTreatPatientHandle = rtiamb.getInteractionClassHandle( "InteractionRoot.DoctorTreatPatient");
+        fedamb.doctorTreatPatientHandle = doctorTreatPatientHandle;
+        rtiamb.publishInteractionClass(doctorTreatPatientHandle);
+
 
         //int getPatientHandle = rtiamb.getInteractionClassHandle( "InteractionRoot.GetPatientQue" );
         //fedamb.getProductHandle = getPatientHandle;
         //rtiamb.subscribeInteractionClass( getPatientHandle );
 
-        classHandle = rtiamb.getObjectClassHandle("ObjectRoot.Patient");
-        this.patientHlaHandle = rtiamb.registerObjectInstance(classHandle);
+    }
+
+    private void sendInteractionGetDoctor(double timeStep) throws RTIexception {
+        SuppliedParameters parameters =
+                RtiFactoryFactory.getRtiFactory().createSuppliedParameters();
+        byte[] doctorNumber = EncodingHelpers.encodeInt(queArrayListDoctors.get(0));
+        byte[] patientNumber = EncodingHelpers.encodeInt(queArrayListPatients.get(0));
+        this.queArrayListPatients.remove(0);
+        this.queArrayListDoctors.remove(0);
+        int interactionHandle = rtiamb.getInteractionClassHandle("InteractionRoot.DoctorTreatPatient");
+        int doctorNumberHandle = rtiamb.getParameterHandle( "doctorNumber", interactionHandle );
+        int patientNumberHandle = rtiamb.getParameterHandle( "patientNumber", interactionHandle );
+        LogicalTime time = convertTime( timeStep );
+
+        parameters.add(doctorNumberHandle, doctorNumber);
+        parameters.add(patientNumberHandle, patientNumber);
+        rtiamb.sendInteraction( interactionHandle, parameters, "tag".getBytes(), time );
     }
 
     private void enableTimePolicy() throws RTIexception

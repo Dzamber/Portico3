@@ -4,6 +4,7 @@ import hla.rti.*;
 import hla.rti.jlc.EncodingHelpers;
 import hla.rti.jlc.NullFederateAmbassador;
 import hla13.clinic.ConstClass;
+import hla13.clinic.ExternalEvent;
 import org.portico.impl.hla13.types.DoubleTime;
 
 import java.util.ArrayList;
@@ -32,8 +33,8 @@ public class QueAmbassador extends NullFederateAmbassador {
 
     protected boolean running 			 = true;
     protected int addPatientHandle = 0;
-    protected int addDoctorHandle = 0;
-    protected int getProductHandle = 0;
+    protected int addDoctorHandle = 2;
+    protected int doctorTreatPatientHandle = 3;
 
     protected ArrayList<ExternalEvent> externalEvents = new ArrayList<>();
 
@@ -137,7 +138,7 @@ public class QueAmbassador extends NullFederateAmbassador {
             } catch (ArrayIndexOutOfBounds ignored) {
 
             }
-        } else if (interactionClass == getProductHandle) {
+        }/* else if (interactionClass == getDoctorHandle) {
             try {
                 int qty = EncodingHelpers.decodeInt(theInteraction.getValue(0));
                 double time =  convertTime(theTime);
@@ -149,7 +150,8 @@ public class QueAmbassador extends NullFederateAmbassador {
             } catch (ArrayIndexOutOfBounds ignored) {
 
             }
-        }
+
+        }*/
 
         log( builder.toString() );
     }

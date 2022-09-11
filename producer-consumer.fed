@@ -33,8 +33,9 @@
       (class AddDoctorQue reliable timestamp TestSpace
         (parameter doctorNumber)
       )
-      (class GetPatientQue reliable timestamp TestSpace
+      (class DoctorTreatPatient best_effort timestamp TestSpace
         (parameter patientNumber)
+        (parameter doctorNumber)
       )
     )
   )

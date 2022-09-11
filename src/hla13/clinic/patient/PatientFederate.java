@@ -19,7 +19,7 @@ public class PatientFederate {
 
     private RTIambassador rtiamb;
     private PatientAmbassador fedamb;
-    private final double timeStep           = 10.0;
+    private final double timeStep           = 360.0;
     private int patientHlaHandle;
     static int patientAmountCurrent = 0;
 
@@ -69,7 +69,9 @@ public class PatientFederate {
         publishAndSubscribe();
         registerPatientObject();
         while (fedamb.running) {
-            advanceTime(randomTime());
+
+            advanceTime(timeStep);
+            log("Current time :" + fedamb.federateTime);
             sendInteraction(fedamb.federateTime + fedamb.federateLookahead);
             rtiamb.tick();
         }
@@ -138,6 +140,17 @@ public class PatientFederate {
 
     private void publishAndSubscribe() throws RTIexception {
         int addProductHandle = rtiamb.getInteractionClassHandle( "InteractionRoot.AddPatientQue" );
+        int classHandle = rtiamb.getObjectClassHandle("ObjectRoot.Patient");
+        int patientNumber    = rtiamb.getAttributeHandle( "patientNumber", classHandle );
+
+        AttributeHandleSet attributes =
+                RtiFactoryFactory.getRtiFactory().createAttributeHandleSet();
+        attributes.add( patientNumber );
+
+        rtiamb.publishObjectClass(classHandle, attributes);
+
+        classHandle = rtiamb.getObjectClassHandle("ObjectRoot.Patient");
+        this.patientHlaHandle = rtiamb.registerObjectInstance(classHandle);
         rtiamb.publishInteractionClass(addProductHandle);
     }
 
@@ -154,10 +167,6 @@ public class PatientFederate {
         }
     }
 
-    private double randomTime() {
-        Random r = new Random();
-        return 1 +(9 * r.nextDouble());
-    }
 
     private void updateHLAObject(double time) throws RTIexception{
         SuppliedAttributes attributes =

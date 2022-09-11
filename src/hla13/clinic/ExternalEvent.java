@@ -1,11 +1,11 @@
-package hla13.clinic.que;
+package hla13.clinic;
 
 
 import java.util.Comparator;
 
 public class ExternalEvent {
 
-    public enum EventType {ADDpatient, GET, ADDdoctor}
+    public enum EventType {ADDpatient, GET, ADDdoctor, GETdoctor}
 
     private int personNumber;
     private EventType eventType;
@@ -34,7 +34,7 @@ public class ExternalEvent {
         return time;
     }
 
-    static class ExternalEventComparator implements Comparator<ExternalEvent> {
+    public static class ExternalEventComparator implements Comparator<ExternalEvent> { //This was protected. Maybe there should be single external event for every federate? But it is easier to have one in that case
 
         @Override
         public int compare(ExternalEvent o1, ExternalEvent o2) {
