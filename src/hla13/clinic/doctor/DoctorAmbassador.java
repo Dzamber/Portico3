@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class DoctorAmbassador extends NullFederateAmbassador {
 
     protected double federateTime        = 0.0;
-    protected double federateLookahead   = 1.0;
+    protected double federateLookahead   = 15.0;
 
     protected boolean isRegulating       = false;
     protected boolean isConstrained      = false;

@@ -100,8 +100,8 @@ public class DoctorFederate {
             }
 
             if(doctorsCurrentlyWaitingInQue.size() < doctorMaxAmount){
-                sendInteraction(fedamb.federateTime + fedamb.federateLookahead);
-                updateHLAObject(fedamb.federateTime + fedamb.federateLookahead);
+                sendInteraction(fedamb.federateTime + fedamb.federateLookahead + 6.0);
+                updateHLAObject(fedamb.federateTime + fedamb.federateLookahead + 6.0);
                 int doctorNumber = 0;
                 for (int i = 0; i < 10; i++){
                     if (!doctorsCurrentlyWaitingInQue.contains(i)){
