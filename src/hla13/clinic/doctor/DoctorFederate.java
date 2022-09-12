@@ -88,8 +88,8 @@ public class DoctorFederate {
                     break;
                 }
             }
-            fedamb.externalEvents.add(new ExternalEvent(0, doctorNumber, ExternalEvent.EventType.GETdoctor, fedamb.federateTime + fedamb.federateLookahead));
-            //sendInteraction(fedamb.federateTime + fedamb.federateLookahead +doctorNumber);
+            //fedamb.externalEvents.add(new ExternalEvent(0, doctorNumber, ExternalEvent.EventType.GETdoctor, 15.0));
+            sendInteraction(15.0);
             //updateHLAObject(fedamb.federateTime + fedamb.federateLookahead +doctorNumber);
             //log("Doctor number " + doctorNumber + " first time added");
             doctorsCurrentlyWaitingInQue.add(doctorNumber);
@@ -147,6 +147,27 @@ public class DoctorFederate {
         }
 
 
+    }
+
+    private void sendInteraction(double timeToSend) throws RTIexception {
+        SuppliedParameters parameters =
+                RtiFactoryFactory.getRtiFactory().createSuppliedParameters();
+        //
+        int doctorNumber = 0;
+        for (int i = 0; i < doctorMaxAmount; i++){
+            if (!doctorsCurrentlyWaitingInQue.contains(i)){
+                doctorNumber = i;
+                break;
+            }
+        }
+        int interactionHandle = rtiamb.getInteractionClassHandle("InteractionRoot.AddDoctorQue");
+        int doctorNumberHandle = rtiamb.getParameterHandle(this.doctorNumberString, interactionHandle );
+
+        LogicalTime time = convertTime( timeToSend );
+        byte[] doctorNumberByte = EncodingHelpers.encodeInt(doctorNumber);
+        parameters.add(doctorNumberHandle, doctorNumberByte);
+
+        rtiamb.sendInteraction( interactionHandle, parameters, "tag".getBytes(), time );
     }
 
     private void updateHLAObject(double time) throws RTIexception{
@@ -215,27 +236,6 @@ public class DoctorFederate {
         {
             rtiamb.tick();
         }
-    }
-
-    private void sendInteraction(double timeStep) throws RTIexception {
-        SuppliedParameters parameters =
-                RtiFactoryFactory.getRtiFactory().createSuppliedParameters();
-        //
-        int doctorNumber = 0;
-        for (int i = 0; i < 10; i++){
-            if (!doctorsCurrentlyWaitingInQue.contains(i)){
-                doctorNumber = i;
-                break;
-            }
-        }
-        int interactionHandle = rtiamb.getInteractionClassHandle("InteractionRoot.AddDoctorQue");
-        int doctorNumberHandle = rtiamb.getParameterHandle(this.doctorNumberString, interactionHandle );
-
-        LogicalTime time = convertTime( timeStep );
-        byte[] doctorNumberByte = EncodingHelpers.encodeInt(doctorNumber);
-        parameters.add(doctorNumberHandle, doctorNumberByte);
-
-        rtiamb.sendInteraction( interactionHandle, parameters, "tag".getBytes(), time );
     }
 
     private void publishAndSubscribe() throws RTIexception {

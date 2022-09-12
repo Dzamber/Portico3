@@ -98,8 +98,8 @@ public class PatientFederate {
 
     private double randomTime() {
         Random r = new Random();
-        double minimalTimeForPatientToCame = 60.0; //1 minuta
-        double maximalTimeForPatientToCame = 600.0; //10 minut
+        double minimalTimeForPatientToCame = 30.0;//0.5 minuty //60.0; //1 minuta
+        double maximalTimeForPatientToCame = 600.0;//10 minut //600.0; //10 minut
         return r.nextDouble()*(maximalTimeForPatientToCame-minimalTimeForPatientToCame+1)+minimalTimeForPatientToCame;
     }
 

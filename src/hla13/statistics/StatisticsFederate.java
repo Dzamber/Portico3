@@ -1,14 +1,17 @@
 package hla13.statistics;
+import com.google.gson.Gson;
 
 import hla.rti.*;
 import hla.rti.jlc.RtiFactoryFactory;
 import hla13.clinic.ExternalEvent;
+import org.apache.commons.io.FileUtils;
 import org.portico.impl.hla13.types.DoubleTime;
 import org.portico.impl.hla13.types.DoubleTimeInterval;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
@@ -70,9 +73,9 @@ public class StatisticsFederate {
 		publishAndSubscribe();
 		log( "Published and Subscribed" );
 
-		for (int i = 0; i < 10; i++){
-		    fedamb.externalEvents.add(new ExternalEvent(0, i, ExternalEvent.EventType.GETdoctor, 15.0));
-		}
+		//for (int i = 0; i < 10; i++){
+		//    fedamb.externalEvents.add(new ExternalEvent(0, i, ExternalEvent.EventType.GETdoctor, 15.0));
+		//}
 
 		
 		while(fedamb.running && fedamb.federateTime < extendedSimulationTime) {
@@ -156,7 +159,29 @@ public class StatisticsFederate {
 		{
 			log( "Didn't destroy federation, federates still joined" );
 		}
-        //ObjectMapper mapper = new ObjectMapper();
+        Gson  mapper = new Gson();
+
+        FileUtils.deleteQuietly(new File("doctor_statistics.txt"));
+        try {
+            System.setOut(new PrintStream(new File("doctor_statistics.txt")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+		for(int i = 0; i<doctorStatistics.size(); i++) {
+		    if(doctorStatistics.get(i).amountOfPatientsTreated > 0) {
+                doctorStatistics.get(i).averageTreatmentTime = doctorStatistics.get(i).workTime / doctorStatistics.get(i).amountOfPatientsTreated;
+            }
+            System.out.println(mapper.toJson(doctorStatistics.get(i)));
+        }
+        FileUtils.deleteQuietly(new File("patient_statistics.txt"));
+        try {
+            System.setOut(new PrintStream(new File("patient_statistics.txt")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        for(int i = 0; i<patientsStatistics.size(); i++)
+            System.out.println(mapper.toJson(patientsStatistics.get(i)));
 	}
 
     private void waitForUser()

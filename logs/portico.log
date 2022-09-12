@@ -4114,3 +4114,859 @@ org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [Docto
 	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
 	at hla13.clinic.patient.PatientFederate.runFederate(PatientFederate.java:86)
 	at hla13.clinic.patient.PatientFederate.main(PatientFederate.java:232)
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.patient.PatientFederate.runFederate(PatientFederate.java:34)
+	at hla13.clinic.patient.PatientFederate.main(PatientFederate.java:232)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [PatientFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [PatientFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:38)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [QueFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [QueFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.reception.ReceptionFederate.runFederate(ReceptionFederate.java:41)
+	at hla13.clinic.reception.ReceptionFederate.main(ReceptionFederate.java:220)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [ReceptionFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [ReceptionFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.statistics.StatisticsFederate.runFederate(StatisticsFederate.java:35)
+	at hla13.statistics.StatisticsFederate.main(StatisticsFederate.java:290)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [StatisticsFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [StatisticsFederate]: label already registered
+ERROR [main] portico.lrc: federates still joined: [QueFederate, PatientFederate, StatisticsFederate, DoctorFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [QueFederate, PatientFederate, StatisticsFederate, DoctorFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.reception.ReceptionFederate.runFederate(ReceptionFederate.java:106)
+	at hla13.clinic.reception.ReceptionFederate.main(ReceptionFederate.java:220)
+ERROR [main] portico.lrc: federates still joined: [StatisticsFederate, DoctorFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [StatisticsFederate, DoctorFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:130)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: federates still joined: [StatisticsFederate, DoctorFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [StatisticsFederate, DoctorFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.patient.PatientFederate.runFederate(PatientFederate.java:86)
+	at hla13.clinic.patient.PatientFederate.main(PatientFederate.java:232)
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.patient.PatientFederate.runFederate(PatientFederate.java:34)
+	at hla13.clinic.patient.PatientFederate.main(PatientFederate.java:232)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [PatientFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [PatientFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:38)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [QueFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [QueFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.reception.ReceptionFederate.runFederate(ReceptionFederate.java:41)
+	at hla13.clinic.reception.ReceptionFederate.main(ReceptionFederate.java:220)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [ReceptionFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [ReceptionFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.statistics.StatisticsFederate.runFederate(StatisticsFederate.java:35)
+	at hla13.statistics.StatisticsFederate.main(StatisticsFederate.java:294)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [StatisticsFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [StatisticsFederate]: label already registered
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: federates still joined: [DoctorFederate, QueFederate, StatisticsFederate, PatientFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [DoctorFederate, QueFederate, StatisticsFederate, PatientFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.reception.ReceptionFederate.runFederate(ReceptionFederate.java:106)
+	at hla13.clinic.reception.ReceptionFederate.main(ReceptionFederate.java:220)
+ERROR [main] portico.lrc: federates still joined: [DoctorFederate, StatisticsFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [DoctorFederate, StatisticsFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:130)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: federates still joined: [DoctorFederate, StatisticsFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [DoctorFederate, StatisticsFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.patient.PatientFederate.runFederate(PatientFederate.java:86)
+	at hla13.clinic.patient.PatientFederate.main(PatientFederate.java:232)
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.patient.PatientFederate.runFederate(PatientFederate.java:34)
+	at hla13.clinic.patient.PatientFederate.main(PatientFederate.java:232)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [PatientFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [PatientFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:38)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [QueFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [QueFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.reception.ReceptionFederate.runFederate(ReceptionFederate.java:41)
+	at hla13.clinic.reception.ReceptionFederate.main(ReceptionFederate.java:220)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [ReceptionFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [ReceptionFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.statistics.StatisticsFederate.runFederate(StatisticsFederate.java:35)
+	at hla13.statistics.StatisticsFederate.main(StatisticsFederate.java:294)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [StatisticsFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [StatisticsFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.patient.PatientFederate.runFederate(PatientFederate.java:34)
+	at hla13.clinic.patient.PatientFederate.main(PatientFederate.java:232)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [PatientFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [PatientFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:38)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [QueFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [QueFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.reception.ReceptionFederate.runFederate(ReceptionFederate.java:41)
+	at hla13.clinic.reception.ReceptionFederate.main(ReceptionFederate.java:220)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [ReceptionFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [ReceptionFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.statistics.StatisticsFederate.runFederate(StatisticsFederate.java:35)
+	at hla13.statistics.StatisticsFederate.main(StatisticsFederate.java:294)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [StatisticsFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [StatisticsFederate]: label already registered
+ERROR [main] portico.lrc: federates still joined: [PatientFederate, DoctorFederate, QueFederate, StatisticsFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [PatientFederate, DoctorFederate, QueFederate, StatisticsFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.reception.ReceptionFederate.runFederate(ReceptionFederate.java:106)
+	at hla13.clinic.reception.ReceptionFederate.main(ReceptionFederate.java:220)
+ERROR [main] portico.lrc: federates still joined: [PatientFederate, DoctorFederate, StatisticsFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [PatientFederate, DoctorFederate, StatisticsFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:130)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.patient.PatientFederate.runFederate(PatientFederate.java:34)
+	at hla13.clinic.patient.PatientFederate.main(PatientFederate.java:232)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [PatientFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [PatientFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:38)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [QueFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [QueFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.reception.ReceptionFederate.runFederate(ReceptionFederate.java:41)
+	at hla13.clinic.reception.ReceptionFederate.main(ReceptionFederate.java:220)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [ReceptionFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [ReceptionFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.statistics.StatisticsFederate.runFederate(StatisticsFederate.java:35)
+	at hla13.statistics.StatisticsFederate.main(StatisticsFederate.java:294)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [StatisticsFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [StatisticsFederate]: label already registered
+ERROR [main] portico.lrc: federates still joined: [DoctorFederate, StatisticsFederate, PatientFederate, QueFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [DoctorFederate, StatisticsFederate, PatientFederate, QueFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.reception.ReceptionFederate.runFederate(ReceptionFederate.java:106)
+	at hla13.clinic.reception.ReceptionFederate.main(ReceptionFederate.java:220)
+ERROR [main] portico.lrc: federates still joined: [DoctorFederate, StatisticsFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [DoctorFederate, StatisticsFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:130)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: federates still joined: [DoctorFederate, StatisticsFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [DoctorFederate, StatisticsFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.patient.PatientFederate.runFederate(PatientFederate.java:86)
+	at hla13.clinic.patient.PatientFederate.main(PatientFederate.java:232)
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.patient.PatientFederate.runFederate(PatientFederate.java:34)
+	at hla13.clinic.patient.PatientFederate.main(PatientFederate.java:232)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [PatientFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [PatientFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:38)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [QueFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [QueFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.reception.ReceptionFederate.runFederate(ReceptionFederate.java:41)
+	at hla13.clinic.reception.ReceptionFederate.main(ReceptionFederate.java:220)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [ReceptionFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [ReceptionFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.statistics.StatisticsFederate.runFederate(StatisticsFederate.java:35)
+	at hla13.statistics.StatisticsFederate.main(StatisticsFederate.java:294)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [StatisticsFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [StatisticsFederate]: label already registered
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Exception encountered while processing incoming message: null
+java.lang.NullPointerException
+	at hla13.clinic.que.QueAmbassador.convertTime(QueAmbassador.java:45)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:132)
+	at hla13.clinic.que.QueAmbassador.receiveInteraction(QueAmbassador.java:106)
+	at org.portico.impl.hla13.handlers.ReceiveInteractionCallbackHandler.process(ReceiveInteractionCallbackHandler.java:94)
+	at org.portico.utils.messaging.MessageChain.process(MessageChain.java:78)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.lrc.LRC.tickProcess(LRC.java:641)
+	at org.portico.lrc.LRC.tickUntilEmpty(LRC.java:469)
+	at org.portico.lrc.LRC.tick(LRC.java:433)
+	at org.portico.impl.hla13.Impl13Helper.tick(Impl13Helper.java:130)
+	at org.portico.impl.hla13.Rti13Ambassador.tick(Rti13Ambassador.java:5781)
+	at hla13.clinic.que.QueFederate.advanceTime(QueFederate.java:199)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:80)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: federates still joined: [PatientFederate, QueFederate, DoctorFederate, StatisticsFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [PatientFederate, QueFederate, DoctorFederate, StatisticsFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.reception.ReceptionFederate.runFederate(ReceptionFederate.java:106)
+	at hla13.clinic.reception.ReceptionFederate.main(ReceptionFederate.java:220)
+ERROR [main] portico.lrc: federates still joined: [DoctorFederate, StatisticsFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [DoctorFederate, StatisticsFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:130)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: federates still joined: [DoctorFederate, StatisticsFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [DoctorFederate, StatisticsFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.patient.PatientFederate.runFederate(PatientFederate.java:86)
+	at hla13.clinic.patient.PatientFederate.main(PatientFederate.java:232)
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.patient.PatientFederate.runFederate(PatientFederate.java:34)
+	at hla13.clinic.patient.PatientFederate.main(PatientFederate.java:232)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [PatientFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [PatientFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:38)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [QueFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [QueFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.reception.ReceptionFederate.runFederate(ReceptionFederate.java:41)
+	at hla13.clinic.reception.ReceptionFederate.main(ReceptionFederate.java:220)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [ReceptionFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [ReceptionFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.statistics.StatisticsFederate.runFederate(StatisticsFederate.java:35)
+	at hla13.statistics.StatisticsFederate.main(StatisticsFederate.java:294)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [StatisticsFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [StatisticsFederate]: label already registered
+ERROR [main] portico.lrc: federates still joined: [StatisticsFederate, QueFederate, PatientFederate, DoctorFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [StatisticsFederate, QueFederate, PatientFederate, DoctorFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.reception.ReceptionFederate.runFederate(ReceptionFederate.java:106)
+	at hla13.clinic.reception.ReceptionFederate.main(ReceptionFederate.java:220)
+ERROR [main] portico.lrc: federates still joined: [StatisticsFederate, PatientFederate, DoctorFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [StatisticsFederate, PatientFederate, DoctorFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:130)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:284)
+ERROR [main] portico.lrc: federates still joined: [StatisticsFederate, DoctorFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [StatisticsFederate, DoctorFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.patient.PatientFederate.runFederate(PatientFederate.java:86)
+	at hla13.clinic.patient.PatientFederate.main(PatientFederate.java:232)
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.patient.PatientFederate.runFederate(PatientFederate.java:34)
+	at hla13.clinic.patient.PatientFederate.main(PatientFederate.java:232)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [PatientFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [PatientFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:38)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:287)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [QueFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [QueFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.clinic.reception.ReceptionFederate.runFederate(ReceptionFederate.java:41)
+	at hla13.clinic.reception.ReceptionFederate.main(ReceptionFederate.java:220)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [ReceptionFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [ReceptionFederate]: label already registered
+ERROR [main] portico.lrc: federation exists: ExampleFederation
+org.portico.lrc.compat.JFederationExecutionAlreadyExists: federation exists: ExampleFederation
+	at org.portico.bindings.jgroups.LrcConnection.createFederation(LrcConnection.java:163)
+	at org.portico.lrc.services.federation.handlers.outgoing.CreateFederationHandler.process(CreateFederationHandler.java:74)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.createFederationExecution(Rti13Ambassador.java:194)
+	at hla13.statistics.StatisticsFederate.runFederate(StatisticsFederate.java:35)
+	at hla13.statistics.StatisticsFederate.main(StatisticsFederate.java:294)
+ERROR [main] portico.lrc: FAILURE Regiser sync point [ReadyToRun] by [StatisticsFederate]: already registered
+ERROR [main] portico.lrc: FAILURE Register sync point [ReadyToRun] by [StatisticsFederate]: label already registered
+ERROR [main] portico.lrc: federates still joined: [PatientFederate, DoctorFederate, QueFederate, StatisticsFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [PatientFederate, DoctorFederate, QueFederate, StatisticsFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.reception.ReceptionFederate.runFederate(ReceptionFederate.java:106)
+	at hla13.clinic.reception.ReceptionFederate.main(ReceptionFederate.java:220)
+ERROR [main] portico.lrc: federates still joined: [DoctorFederate, StatisticsFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [DoctorFederate, StatisticsFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.que.QueFederate.runFederate(QueFederate.java:130)
+	at hla13.clinic.que.QueFederate.main(QueFederate.java:287)
+ERROR [main] portico.lrc: federates still joined: [DoctorFederate, StatisticsFederate]
+org.portico.lrc.compat.JFederatesCurrentlyJoined: federates still joined: [DoctorFederate, StatisticsFederate]
+	at org.portico.bindings.jgroups.LrcConnection.destroyFederation(LrcConnection.java:211)
+	at org.portico.lrc.services.federation.handlers.outgoing.DestroyFederationHandler.process(DestroyFederationHandler.java:57)
+	at org.portico.utils.messaging.MessageSink.process(MessageSink.java:187)
+	at org.portico.impl.hla13.Impl13Helper.processMessage(Impl13Helper.java:123)
+	at org.portico.impl.hla13.Rti13Ambassador.processMessage(Rti13Ambassador.java:5822)
+	at org.portico.impl.hla13.Rti13Ambassador.destroyFederationExecution(Rti13Ambassador.java:257)
+	at hla13.clinic.patient.PatientFederate.runFederate(PatientFederate.java:86)
+	at hla13.clinic.patient.PatientFederate.main(PatientFederate.java:232)

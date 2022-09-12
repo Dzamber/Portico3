@@ -96,15 +96,15 @@ public class QueAmbassador extends NullFederateAmbassador {
     }
 
 
-    public void receiveInteraction( int interactionClass,
-                                    ReceivedInteraction theInteraction,
-                                    byte[] tag )
-    {
-        // just pass it on to the other method for printing purposes
-        // passing null as the time will let the other method know it
-        // it from us, not from the RTI
-        receiveInteraction(interactionClass, theInteraction, tag, null, null);
-    }
+   // public void receiveInteraction( int interactionClass,
+   //                                 ReceivedInteraction theInteraction,
+   //                                 byte[] tag )
+   // {
+   //     // just pass it on to the other method for printing purposes
+   //     // passing null as the time will let the other method know it
+   //     // it from us, not from the RTI
+   //     receiveInteraction(interactionClass, theInteraction, tag, null, null);
+   // }
 
     public void receiveInteraction( int interactionClass,
                                     ReceivedInteraction theInteraction,
@@ -117,7 +117,7 @@ public class QueAmbassador extends NullFederateAmbassador {
             try {
                 int personNumber = EncodingHelpers.decodeInt(theInteraction.getValue(0));
                 double time =  convertTime(theTime);
-                externalEvents.add(new ExternalEvent(personNumber, ExternalEvent.EventType.ADDpatientToReception, time));
+                externalEvents.add(new ExternalEvent(personNumber, ExternalEvent.EventType.ADDpatientToQue, time));
                 builder.append("ADDpatient , time=" + time);
                 builder.append(" id=").append(personNumber);
                 builder.append( "\n" );

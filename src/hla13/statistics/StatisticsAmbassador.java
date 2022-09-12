@@ -81,12 +81,12 @@ public class StatisticsAmbassador extends NullFederateAmbassador {
     {
 		StringBuilder builder = new StringBuilder("Interaction Received: ");
 		//log("interactionClass: " + interactionClass);
-        if(interactionClass == addPatientToReceptionHandle) {
+        if(interactionClass == addPatientToQueHandle) {
             try {
                 int patientNumber = EncodingHelpers.decodeInt(theInteraction.getValue(0));
                 double time =  convertTime(theTime);
-                externalEvents.add(new ExternalEvent(patientNumber, ExternalEvent.EventType.ADDpatientToReception, time));
-                builder.append("ADDpatientToReception , time=" + time + ", patientNumber=" + patientNumber );
+                externalEvents.add(new ExternalEvent(patientNumber, ExternalEvent.EventType.ADDpatientToQue, time));
+                builder.append("ADDpatientToQue , time=" + time + ", patientNumber=" + patientNumber );
                 builder.append( "\n" );
             } catch (ArrayIndexOutOfBounds ignored) {
 

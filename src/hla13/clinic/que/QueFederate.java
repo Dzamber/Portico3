@@ -84,7 +84,7 @@ public class QueFederate {
                 for(ExternalEvent externalEvent : fedamb.externalEvents) {
                     fedamb.federateTime = externalEvent.getTime();
                     switch (externalEvent.getEventType()) {
-                        case ADDpatientToReception:
+                        case ADDpatientToQue:
                             log(" ADDpatient");
                             this.addPatientQue(externalEvent.getPersonNumber());
                             break;
@@ -143,12 +143,15 @@ public class QueFederate {
 
     public void addPatientQue(int patientNumber) {
         this.queArrayListPatients.add(patientNumber);
-        log("Added "+ patientNumber + " at time: "+ fedamb.federateTime +", current patient list size: " + this.queArrayListPatients.size());
+        log("Added "+ patientNumber + " at time: "+ fedamb.federateTime +", current patient list size: " + this.queArrayListPatients.size()
+                + ", current doctor list size: " + this.queArrayListDoctors.size());
+
     }
 
     public void addDoctorQue(int doctorNumber) {
         this.queArrayListDoctors.add(doctorNumber);
-        log("Added "+ doctorNumber + " at time: "+ fedamb.federateTime +", current doctor list size: " + this.queArrayListDoctors.size());
+        log("Added "+ doctorNumber + " at time: "+ fedamb.federateTime +", current doctor list size: " + this.queArrayListDoctors.size()
+                +", current patient list size: " + this.queArrayListPatients.size());
     }
 
     /*public void getPatientQue() {

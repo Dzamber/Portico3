@@ -1,0 +1,10 @@
+{"doctorNumber":0,"amountOfPatientsTreated":3,"averageTreatmentTime":869.7079140997308,"workTime":2609.1237422991926}
+{"doctorNumber":1,"amountOfPatientsTreated":2,"averageTreatmentTime":1134.8586835828085,"workTime":2269.717367165617}
+{"doctorNumber":9,"amountOfPatientsTreated":2,"averageTreatmentTime":1335.317136443772,"workTime":2670.634272887544}
+{"doctorNumber":8,"amountOfPatientsTreated":2,"averageTreatmentTime":1343.339559038995,"workTime":2686.67911807799}
+{"doctorNumber":7,"amountOfPatientsTreated":3,"averageTreatmentTime":1093.4791978239662,"workTime":3280.4375934718987}
+{"doctorNumber":6,"amountOfPatientsTreated":3,"averageTreatmentTime":871.6076613807701,"workTime":2614.8229841423104}
+{"doctorNumber":5,"amountOfPatientsTreated":2,"averageTreatmentTime":1283.0016056182453,"workTime":2566.0032112364906}
+{"doctorNumber":4,"amountOfPatientsTreated":2,"averageTreatmentTime":1101.3692282034856,"workTime":2202.738456406971}
+{"doctorNumber":3,"amountOfPatientsTreated":2,"averageTreatmentTime":1397.4689962184036,"workTime":2794.9379924368072}
+{"doctorNumber":2,"amountOfPatientsTreated":2,"averageTreatmentTime":1070.90903026752,"workTime":2141.81806053504}
