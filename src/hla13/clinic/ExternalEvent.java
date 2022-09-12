@@ -8,6 +8,7 @@ public class ExternalEvent {
     public enum EventType {ADDpatient, GET, ADDdoctor, GETdoctor}
 
     private int personNumber;
+    private int doctorNumber;
     private EventType eventType;
     private Double time;
 
@@ -16,6 +17,14 @@ public class ExternalEvent {
         this.eventType = eventType;
         this.time = time;
     }
+
+    public ExternalEvent(int personNumber, int doctorNumber, EventType eventType, Double time) {
+        this.personNumber = personNumber;
+        this.doctorNumber = doctorNumber;
+        this.eventType = eventType;
+        this.time = time;
+    }
+
 
     public ExternalEvent(EventType eventType, Double time) {
         this.eventType = eventType;
@@ -29,6 +38,7 @@ public class ExternalEvent {
     public int getPersonNumber() {
         return personNumber;
     }
+    public int getDoctorNumber() {return doctorNumber;}
 
     public double getTime() {
         return time;

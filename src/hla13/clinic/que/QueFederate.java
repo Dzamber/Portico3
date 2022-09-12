@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class QueFederate {
 
@@ -102,7 +103,7 @@ public class QueFederate {
                 timeToAdvance += fedamb.federateLookahead;
                 fedamb.federateTime = timeToAdvance;
                 log("Current time :" + fedamb.federateTime);
-                if(this.queArrayListDoctors.size() > 0 && this.queArrayListPatients.size() > 0){
+                while(this.queArrayListDoctors.size() > 0 && this.queArrayListPatients.size() > 0){
                     log("Patient: " + this.queArrayListPatients.get(0) + " is being treated by doctor: " + this.queArrayListDoctors.get(0));
                     //log("Removing doctor: " + );
                     sendInteractionGetDoctor(fedamb.federateTime + fedamb.federateLookahead);
@@ -113,6 +114,8 @@ public class QueFederate {
         }
 
     }
+
+
 
     public void addPatientQue(int patientNumber) {
         this.queArrayListPatients.add(patientNumber);
@@ -162,6 +165,7 @@ public class QueFederate {
     }
 
     private void advanceTime( double timeToAdvance ) throws RTIexception {
+        log("requesting time advance to: " + timeToAdvance);
         fedamb.isAdvancing = true;
         LogicalTime newTime = convertTime( timeToAdvance );
         rtiamb.timeAdvanceRequest( newTime );
@@ -194,7 +198,7 @@ public class QueFederate {
 
     }
 
-    private void sendInteractionGetDoctor(double timeStep) throws RTIexception {
+    private void sendInteractionGetDoctor(double timeToSendMessage) throws RTIexception {
         SuppliedParameters parameters =
                 RtiFactoryFactory.getRtiFactory().createSuppliedParameters();
         byte[] doctorNumber = EncodingHelpers.encodeInt(queArrayListDoctors.get(0));
@@ -204,7 +208,7 @@ public class QueFederate {
         int interactionHandle = rtiamb.getInteractionClassHandle("InteractionRoot.DoctorTreatPatient");
         int doctorNumberHandle = rtiamb.getParameterHandle( "doctorNumber", interactionHandle );
         int patientNumberHandle = rtiamb.getParameterHandle( "patientNumber", interactionHandle );
-        LogicalTime time = convertTime( timeStep );
+        LogicalTime time = convertTime( timeToSendMessage );
 
         parameters.add(doctorNumberHandle, doctorNumber);
         parameters.add(patientNumberHandle, patientNumber);

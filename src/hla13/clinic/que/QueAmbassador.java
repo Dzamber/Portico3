@@ -115,11 +115,11 @@ public class QueAmbassador extends NullFederateAmbassador {
         StringBuilder builder = new StringBuilder( "Interaction Received:" );
         if(interactionClass == addPatientHandle) {
             try {
-                int qty = EncodingHelpers.decodeInt(theInteraction.getValue(0));
+                int personNumber = EncodingHelpers.decodeInt(theInteraction.getValue(0));
                 double time =  convertTime(theTime);
-                externalEvents.add(new ExternalEvent(qty, ExternalEvent.EventType.ADDpatient, time));
+                externalEvents.add(new ExternalEvent(personNumber, ExternalEvent.EventType.ADDpatient, time));
                 builder.append("ADDpatient , time=" + time);
-                builder.append(" id=").append(qty);
+                builder.append(" id=").append(personNumber);
                 builder.append( "\n" );
 
             } catch (ArrayIndexOutOfBounds ignored) {
@@ -128,11 +128,10 @@ public class QueAmbassador extends NullFederateAmbassador {
 
         }else if (interactionClass == addDoctorHandle) {
             try {
-                int qty = EncodingHelpers.decodeInt(theInteraction.getValue(0));
+                int personNumber = EncodingHelpers.decodeInt(theInteraction.getValue(0));
                 double time =  convertTime(theTime);
-                externalEvents.add(new ExternalEvent(ExternalEvent.EventType.ADDdoctor , time));
+                externalEvents.add(new ExternalEvent(personNumber, ExternalEvent.EventType.ADDdoctor , time));
                 builder.append( "ADDdoctor , time=" + time );
-                builder.append(" id=").append(qty);
                 builder.append( "\n" );
 
             } catch (ArrayIndexOutOfBounds ignored) {

@@ -19,7 +19,7 @@ public class PatientFederate {
 
     private RTIambassador rtiamb;
     private PatientAmbassador fedamb;
-    private final double timeStep           = 360.0;
+    private final double timeStep           = 10.0;
     private int patientHlaHandle;
     static int patientAmountCurrent = 0;
 
@@ -70,13 +70,19 @@ public class PatientFederate {
         registerPatientObject();
         while (fedamb.running) {
 
-            advanceTime(timeStep);
+            advanceTime(randomTime());
             log("Current time :" + fedamb.federateTime);
             sendInteraction(fedamb.federateTime + fedamb.federateLookahead);
             rtiamb.tick();
         }
 
     }
+
+    private double randomTime() {
+        Random r = new Random();
+        return timeStep +(4 * r.nextDouble());
+    }
+
 
     private void registerPatientObject() throws RTIexception {
         int classHandle = rtiamb.getObjectClassHandle("ObjectRoot.Patient");
@@ -156,7 +162,7 @@ public class PatientFederate {
 
     private void advanceTime( double timestep ) throws RTIexception
     {
-        log("requesting time advance for: " + timestep);
+        log("requesting time advance for: " + timestep + ", in total: " + fedamb.federateTime + timestep);
         // request the advance
         fedamb.isAdvancing = true;
         LogicalTime newTime = convertTime( fedamb.federateTime + timestep );

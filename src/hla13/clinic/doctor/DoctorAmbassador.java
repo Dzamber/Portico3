@@ -99,11 +99,11 @@ public class DoctorAmbassador extends NullFederateAmbassador {
         StringBuilder builder = new StringBuilder( "Interaction Received:" );
         if(interactionClass == getDoctorHandle) {
             try {
-                int qty = EncodingHelpers.decodeInt(theInteraction.getValue(0));
+                int patientNumber = EncodingHelpers.decodeInt(theInteraction.getValue(0));
+                int doctorNumber = EncodingHelpers.decodeInt(theInteraction.getValue(1));
                 double time =  convertTime(theTime);
-                externalEvents.add(new ExternalEvent(qty, ExternalEvent.EventType.GETdoctor, time));
-                builder.append("GETdoctor , time=" + time);
-                builder.append(" id=").append(qty);
+                externalEvents.add(new ExternalEvent(patientNumber, doctorNumber, ExternalEvent.EventType.GETdoctor, time));
+                builder.append("GETdoctor , time=" + time + ", patientNumber=" + patientNumber + ", doctorNumber="+doctorNumber);
                 builder.append( "\n" );
 
             } catch (ArrayIndexOutOfBounds ignored) {

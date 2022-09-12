@@ -27,7 +27,7 @@ public class DoctorFederate {
     private int doctorHlaHandle;
     private ArrayList<Integer> doctorsCurrentlyWaitingInQue = new ArrayList<>();
     static int doctorMaxAmount = 10;
-    private final String doctorNumber = "doctorNumber";
+    private final String doctorNumberString = "doctorNumber";
 
     public void runFederate() throws RTIexception {
         rtiamb = RtiFactoryFactory.getRtiFactory().
@@ -77,41 +77,65 @@ public class DoctorFederate {
 
         registerDoctorObject();
         //int firstDoctorsAdd = 0;
+        while(doctorsCurrentlyWaitingInQue.size() < doctorMaxAmount){
+            int doctorNumber = 0;
+            for (int i = 0; i < 10; i++){
+                if (!doctorsCurrentlyWaitingInQue.contains(i)){
+                    doctorNumber = i;
+                    break;
+                }
+            }
+            fedamb.externalEvents.add(new ExternalEvent(0, doctorNumber, ExternalEvent.EventType.GETdoctor, fedamb.federateTime + fedamb.federateLookahead));
+            //sendInteraction(fedamb.federateTime + fedamb.federateLookahead +doctorNumber);
+            //updateHLAObject(fedamb.federateTime + fedamb.federateLookahead +doctorNumber);
+            //log("Doctor number " + doctorNumber + " first time added");
+            doctorsCurrentlyWaitingInQue.add(doctorNumber);
+
+        }
+        //rtiamb.tick();
+
         while (fedamb.running) {
             //while(firstDoctorsAdd < doctorMaxAmount){//experiment
             //    registerDoctorObject();
             //    firstDoctorsAdd++;
             //}
 
-            advanceTime(timeStep);
-            log("Current time :" + fedamb.federateTime);
+
             if(fedamb.externalEvents.size() > 0) {
                 fedamb.externalEvents.sort(new ExternalEvent.ExternalEventComparator());
                 for(ExternalEvent externalEvent : fedamb.externalEvents) {
-                    fedamb.federateTime = externalEvent.getTime();
-                    switch (externalEvent.getEventType()) {
-                        case GETdoctor:
-                            log(" GETdoctor");
-                            this.doctorsCurrentlyWaitingInQue.remove(Integer.valueOf(externalEvent.getPersonNumber()));
-                            break;
+                    //fedamb.federateTime = externalEvent.getTime();
+                    if (externalEvent.getEventType() == ExternalEvent.EventType.GETdoctor) {
+                        log(" GETdoctor1 doctor: " + externalEvent.getDoctorNumber());
+                        this.doctorsCurrentlyWaitingInQue.remove(Integer.valueOf(externalEvent.getDoctorNumber()));
+                    }
+                    if(doctorsCurrentlyWaitingInQue.size() < doctorMaxAmount){
+                        log(" GETdoctor2 " + (fedamb.federateTime + fedamb.federateLookahead));
+                        sendInteraction(fedamb.federateTime + fedamb.federateLookahead + randomTime());
+                        log(" GETdoctor3");
+                        updateHLAObject(fedamb.federateTime + fedamb.federateLookahead  + randomTime());
+                        log(" GETdoctor4");
+                        int doctorNumber = 0;
+                        for (int i = 0; i < 10; i++){
+                            if (!doctorsCurrentlyWaitingInQue.contains(i)){
+                                doctorNumber = i;
+                                break;
+                            }
+                        }
+                        doctorsCurrentlyWaitingInQue.add(doctorNumber);
                     }
                 }
                 fedamb.externalEvents.clear();
             }
 
-            if(doctorsCurrentlyWaitingInQue.size() < doctorMaxAmount){
-                sendInteraction(fedamb.federateTime + fedamb.federateLookahead + 6.0);
-                updateHLAObject(fedamb.federateTime + fedamb.federateLookahead + 6.0);
-                int doctorNumber = 0;
-                for (int i = 0; i < 10; i++){
-                    if (!doctorsCurrentlyWaitingInQue.contains(i)){
-                        doctorNumber = i;
-                        break;
-                    }
-                }
-                doctorsCurrentlyWaitingInQue.add(doctorNumber);
-            }
+
+            log(" GETdoctor5");
+            advanceTime(randomTime() + fedamb.federateLookahead);
+            log("Current time :" + fedamb.federateTime);
+            log("Current amount of doctors: " + doctorsCurrentlyWaitingInQue.size());
+            log(" GETdoctor6");
             rtiamb.tick();
+            log(" GETdoctor7");
         }
 
     }
@@ -121,7 +145,7 @@ public class DoctorFederate {
                 RtiFactoryFactory.getRtiFactory().createSuppliedAttributes();
 
         int classHandle = rtiamb.getObjectClass(doctorHlaHandle);
-        int doctorNumberHandle = rtiamb.getAttributeHandle(doctorNumber, classHandle );
+        int doctorNumberHandle = rtiamb.getAttributeHandle(doctorNumberString, classHandle );
         int doctorNumber = 0;
         for (int i = 0; i < 10; i++){
             if (!doctorsCurrentlyWaitingInQue.contains(i)){
@@ -140,7 +164,7 @@ public class DoctorFederate {
 
     private void registerDoctorObject() throws RTIexception {
         int classHandle = rtiamb.getObjectClassHandle("ObjectRoot.Doctor");
-        int doctorHandle    = rtiamb.getAttributeHandle(doctorNumber, classHandle );
+        int doctorHandle    = rtiamb.getAttributeHandle(doctorNumberString, classHandle );
         AttributeHandleSet attributes =
                 RtiFactoryFactory.getRtiFactory().createAttributeHandleSet();
         attributes.add( doctorHandle );
@@ -195,7 +219,7 @@ public class DoctorFederate {
             }
         }
         int interactionHandle = rtiamb.getInteractionClassHandle("InteractionRoot.AddDoctorQue");
-        int doctorNumberHandle = rtiamb.getParameterHandle(this.doctorNumber, interactionHandle );
+        int doctorNumberHandle = rtiamb.getParameterHandle(this.doctorNumberString, interactionHandle );
 
         LogicalTime time = convertTime( timeStep );
         byte[] doctorNumberByte = EncodingHelpers.encodeInt(doctorNumber);
@@ -215,7 +239,7 @@ public class DoctorFederate {
 
     private void advanceTime( double timestep ) throws RTIexception
     {
-        log("requesting time advance for: " + timestep);
+        log("requesting time advance for: " + timestep + ", in total: " + fedamb.federateTime + timestep);
         // request the advance
         fedamb.isAdvancing = true;
         LogicalTime newTime = convertTime( fedamb.federateTime + timestep );
@@ -228,7 +252,9 @@ public class DoctorFederate {
 
     private double randomTime() {
         Random r = new Random();
-        return 1 +(4 * r.nextDouble());
+        double minimalTimeForDoctorWork = 10.0;
+        double maximalTimeForDoctorWork = 50.0;
+        return r.nextDouble()*(maximalTimeForDoctorWork-minimalTimeForDoctorWork+1)+minimalTimeForDoctorWork;
     }
 
     private LogicalTime convertTime( double time )
