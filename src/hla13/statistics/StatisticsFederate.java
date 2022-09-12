@@ -2,6 +2,7 @@ package hla13.statistics;
 
 import hla.rti.*;
 import hla.rti.jlc.RtiFactoryFactory;
+import hla13.clinic.ExternalEvent;
 import org.portico.impl.hla13.types.DoubleTime;
 import org.portico.impl.hla13.types.DoubleTimeInterval;
 
@@ -9,6 +10,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
+
+import static hla13.clinic.ConstClass.extendedSimulationTime;
+import static hla13.clinic.ConstClass.maxSimulationTime;
 
 public class StatisticsFederate {
 
@@ -16,7 +21,8 @@ public class StatisticsFederate {
 
 	private RTIambassador rtiamb;
 	private StatisticsAmbassador fedamb;
-	
+    protected ArrayList<PatientStatistics> patientsStatistics = new ArrayList<>();
+    protected ArrayList<DoctorStatistics> doctorStatistics = new ArrayList<>();
 	public void runFederate() throws Exception{
 		rtiamb = RtiFactoryFactory.getRtiFactory().createRtiAmbassador();
 
@@ -63,11 +69,75 @@ public class StatisticsFederate {
 
 		publishAndSubscribe();
 		log( "Published and Subscribed" );
+
+		for (int i = 0; i < 10; i++){
+		    fedamb.externalEvents.add(new ExternalEvent(0, i, ExternalEvent.EventType.GETdoctor, 15.0));
+		}
+
 		
-		
-		while(fedamb.running) {
-            advanceTime(1.0);
+		while(fedamb.running && fedamb.federateTime < extendedSimulationTime) {
+            if(fedamb.externalEvents.size() > 0) {
+                fedamb.externalEvents.sort(new ExternalEvent.ExternalEventComparator());
+                for(ExternalEvent externalEvent : fedamb.externalEvents) {
+                    //fedamb.federateTime = externalEvent.getTime();
+                    switch (externalEvent.getEventType()) {
+                        case ADDpatientToQue:
+                            log("ADDpatientToQue " + externalEvent.getPersonNumber() + " time: " + externalEvent.getTime());
+                            for(int i = 0; i<patientsStatistics.size(); i++){
+                                if(patientsStatistics.get(i).patientNumber == externalEvent.getPersonNumber()){
+                                    patientsStatistics.get(i).getToQueTime = externalEvent.getTime();
+                                    break;
+                                }
+                            }
+                            break;
+                        //case GET:
+                        //    ;
+//
+                        //    break;
+                        case ADDdoctor:
+                            log("ADDdoctor " + externalEvent.getPersonNumber() + " time: " + externalEvent.getTime());
+                            boolean found = false;
+                            for(int i = 0;i<doctorStatistics.size(); i++){
+                                if(doctorStatistics.get(i).doctorNumber == externalEvent.getPersonNumber()){
+                                    doctorStatistics.get(i).workTime += externalEvent.getTime();
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            if(found == false){
+                                doctorStatistics.add(new DoctorStatistics(externalEvent.getPersonNumber()));
+                            }
+                            break;
+
+                        case GETdoctor:
+                            log("GETdoctor doctor: " + externalEvent.getDoctorNumber() + ", patient:" + externalEvent.getPersonNumber() + " time: " + externalEvent.getTime());
+                            for(int i = 0; i<patientsStatistics.size(); i++){
+                                if(patientsStatistics.get(i).patientNumber == externalEvent.getPersonNumber()){
+                                    patientsStatistics.get(i).getToDoctorTime = externalEvent.getTime();
+                                    for(int j = 0; j < doctorStatistics.size(); j++){
+                                        if(doctorStatistics.get(j).doctorNumber == externalEvent.getDoctorNumber()){
+                                            doctorStatistics.get(j).amountOfPatientsTreated++;
+                                            doctorStatistics.get(j).workTime -= externalEvent.getTime();
+                                            patientsStatistics.get(i).doctorNumber = externalEvent.getDoctorNumber();
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+                            break;
+                        case ADDpatientToReception:
+                            log("ADDpatientToReception " + externalEvent.getPersonNumber() + " time: " + externalEvent.getTime());
+                            PatientStatistics patientToAdd = new PatientStatistics(externalEvent.getPersonNumber(), externalEvent.getTime());
+                            patientsStatistics.add(patientToAdd);
+                            break;
+                    }
+                }
+            }
+            fedamb.externalEvents.clear();
+
 			rtiamb.tick();
+            advanceTime(1.0);
 		}
 
 		rtiamb.resignFederationExecution( ResignAction.NO_ACTION );
@@ -86,6 +156,7 @@ public class StatisticsFederate {
 		{
 			log( "Didn't destroy federation, federates still joined" );
 		}
+        //ObjectMapper mapper = new ObjectMapper();
 	}
 
     private void waitForUser()
@@ -116,40 +187,39 @@ public class StatisticsFederate {
     }
 	
 	private void publishAndSubscribe() throws RTIexception {
+        int getDoctorHandle = rtiamb.getInteractionClassHandle( "InteractionRoot.DoctorTreatPatient" );
+        fedamb.doctorTreatPatientHandle = getDoctorHandle;
+        log("getDoctorHandle " + getDoctorHandle);
+        rtiamb.subscribeInteractionClass( getDoctorHandle );
+        log("Subscribed to DoctorTreatPatient");
 
-		// Publkowanie obiektu SimObject z atrybutem state
 
-		int simObjectClassHandle = rtiamb
-				.getObjectClassHandle("ObjectRoot.Storage");
-		int stateHandle = rtiamb.getAttributeHandle("stock", simObjectClassHandle);
+        int addPatientHandle = rtiamb.getInteractionClassHandle( "InteractionRoot.AddPatientQue" );
+        fedamb.addPatientToQueHandle = addPatientHandle;
+        log("addPatientHandle " + addPatientHandle);
+        rtiamb.subscribeInteractionClass( addPatientHandle );
+        log("Subscribed to AddPatientQue");
 
-		AttributeHandleSet attributes = RtiFactoryFactory.getRtiFactory()
-				.createAttributeHandleSet();
-		attributes.add(stateHandle);
+        int addDoctorHandle = rtiamb.getInteractionClassHandle( "InteractionRoot.AddDoctorQue" );
+        fedamb.addDoctorHandle = addDoctorHandle;
+        log("addDoctorHandle " + addDoctorHandle);
+        rtiamb.subscribeInteractionClass( addDoctorHandle );
+        log("Subscribed to AddDoctorQue");
 
-		rtiamb.subscribeObjectClassAttributes(simObjectClassHandle, attributes);
+        int addPatientToReceptionHandle = rtiamb.getInteractionClassHandle( "InteractionRoot.AddPatientToReception" );
+        fedamb.addPatientToReceptionHandle = addPatientToReceptionHandle;
+        log("addPatientToReceptionHandle " + addPatientToReceptionHandle);
+        rtiamb.subscribeInteractionClass( addPatientToReceptionHandle );
+        log("Subscribed to AddPatientToReception");
 
-		// Zapisanie do inteakcji ko�cz�cej
-		int interactionHandle = rtiamb
-				.getInteractionClassHandle("InteractionRoot.Finish");
-		// Dodanie mapowania interakcji na uchwyt
-		//HandlersHelper.addInteractionClassHandler("InteractionRoot.Finish",
-        //        interactionHandle);
-
-		rtiamb.subscribeInteractionClass(interactionHandle);
 	}
 
     private void enableTimePolicy() throws RTIexception
     {
-        // NOTE: Unfortunately, the LogicalTime/LogicalTimeInterval create code is
-        //       Portico specific. You will have to alter this if you move to a
-        //       different RTI implementation. As such, we've isolated it into a
-        //       method so that any change only needs to happen in a couple of spots
+
         LogicalTime currentTime = convertTime( fedamb.federateTime );
         LogicalTimeInterval lookahead = convertInterval( fedamb.federateLookahead );
 
-        ////////////////////////////
-        // enable time regulation //
         ////////////////////////////
         this.rtiamb.enableTimeRegulation( currentTime, lookahead );
 

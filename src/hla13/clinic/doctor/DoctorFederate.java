@@ -14,6 +14,9 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static hla13.clinic.ConstClass.extendedSimulationTime;
+import static hla13.clinic.ConstClass.maxSimulationTime;
+
 /**
  * Created by Michal on 2016-04-27.
  */
@@ -92,29 +95,20 @@ public class DoctorFederate {
             doctorsCurrentlyWaitingInQue.add(doctorNumber);
 
         }
-        //rtiamb.tick();
 
-        while (fedamb.running) {
-            //while(firstDoctorsAdd < doctorMaxAmount){//experiment
-            //    registerDoctorObject();
-            //    firstDoctorsAdd++;
-            //}
-
-
+        while (fedamb.running && fedamb.federateTime < extendedSimulationTime) {
             if(fedamb.externalEvents.size() > 0) {
                 fedamb.externalEvents.sort(new ExternalEvent.ExternalEventComparator());
                 for(ExternalEvent externalEvent : fedamb.externalEvents) {
                     //fedamb.federateTime = externalEvent.getTime();
                     if (externalEvent.getEventType() == ExternalEvent.EventType.GETdoctor) {
-                        log(" GETdoctor1 doctor: " + externalEvent.getDoctorNumber());
+                        log(" GETdoctor doctor: " + externalEvent.getDoctorNumber());
                         this.doctorsCurrentlyWaitingInQue.remove(Integer.valueOf(externalEvent.getDoctorNumber()));
                     }
                     if(doctorsCurrentlyWaitingInQue.size() < doctorMaxAmount){
-                        log(" GETdoctor2 " + (fedamb.federateTime + fedamb.federateLookahead));
+                        log(" GETdoctor time:" + (fedamb.federateTime + fedamb.federateLookahead));
                         sendInteraction(fedamb.federateTime + fedamb.federateLookahead + randomTime());
-                        log(" GETdoctor3");
                         updateHLAObject(fedamb.federateTime + fedamb.federateLookahead  + randomTime());
-                        log(" GETdoctor4");
                         int doctorNumber = 0;
                         for (int i = 0; i < 10; i++){
                             if (!doctorsCurrentlyWaitingInQue.contains(i)){
@@ -127,16 +121,31 @@ public class DoctorFederate {
                 }
                 fedamb.externalEvents.clear();
             }
-
-
-            log(" GETdoctor5");
-            advanceTime(randomTime() + fedamb.federateLookahead);
+            advanceTime(timeStep + fedamb.federateLookahead);
             log("Current time :" + fedamb.federateTime);
             log("Current amount of doctors: " + doctorsCurrentlyWaitingInQue.size());
-            log(" GETdoctor6");
             rtiamb.tick();
-            log(" GETdoctor7");
         }
+
+        int classHandle = rtiamb.getObjectClassHandle("ObjectRoot.Doctor");
+        rtiamb.unpublishObjectClass(classHandle);
+        rtiamb.resignFederationExecution( ResignAction.NO_ACTION );
+        log( "Resigned from Federation" );
+
+        try
+        {
+            rtiamb.destroyFederationExecution( "ExampleFederation" );
+            log( "Destroyed Federation" );
+        }
+        catch( FederationExecutionDoesNotExist dne )
+        {
+            log( "No need to destroy federation, it doesn't exist" );
+        }
+        catch( FederatesCurrentlyJoined fcj )
+        {
+            log( "Didn't destroy federation, federates still joined" );
+        }
+
 
     }
 
@@ -172,6 +181,7 @@ public class DoctorFederate {
         this.doctorHlaHandle = rtiamb.registerObjectInstance(classHandle);
 
     }
+
     private void waitForUser()
     {
         log( " >>>>>>>>>> Press Enter to Continue <<<<<<<<<<" );
@@ -252,8 +262,8 @@ public class DoctorFederate {
 
     private double randomTime() {
         Random r = new Random();
-        double minimalTimeForDoctorWork = 10.0;
-        double maximalTimeForDoctorWork = 50.0;
+        double minimalTimeForDoctorWork = 600.0; //10 minut
+        double maximalTimeForDoctorWork = 1500.0; //25 minut
         return r.nextDouble()*(maximalTimeForDoctorWork-minimalTimeForDoctorWork+1)+minimalTimeForDoctorWork;
     }
 

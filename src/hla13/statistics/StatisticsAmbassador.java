@@ -4,7 +4,10 @@ import hla.rti.*;
 import hla.rti.jlc.EncodingHelpers;
 import hla.rti.jlc.NullFederateAmbassador;
 import hla13.clinic.ConstClass;
+import hla13.clinic.ExternalEvent;
 import org.portico.impl.hla13.types.DoubleTime;
+
+import java.util.ArrayList;
 
 public class StatisticsAmbassador extends NullFederateAmbassador {
 
@@ -18,6 +21,11 @@ public class StatisticsAmbassador extends NullFederateAmbassador {
 
     protected boolean isAnnounced        = false;
     protected boolean isReadyToRun       = false;
+    protected int addPatientToQueHandle = 0;
+    protected int addDoctorHandle = 2;
+    protected int doctorTreatPatientHandle = 3;
+    protected int addPatientToReceptionHandle = 4;
+    protected ArrayList<ExternalEvent> externalEvents = new ArrayList<>();
 
 
     public void timeRegulationEnabled( LogicalTime theFederateTime )
@@ -58,23 +66,66 @@ public class StatisticsAmbassador extends NullFederateAmbassador {
     }
 
 
-	public void receiveInteraction(int interactionClass,
-			ReceivedInteraction theInteraction, byte[] tag) {
+	//public void receiveInteraction( int interactionClass,
+	//		                        ReceivedInteraction theInteraction,
+    //                               byte[] tag) {
+    //
+	//	receiveInteraction(interactionClass, theInteraction, tag, null, null);
+	//}
 
-		receiveInteraction(interactionClass, theInteraction, tag, null, null);
-	}
-
-	public void receiveInteraction(int interactionClass,
-			ReceivedInteraction theInteraction, byte[] tag,
-			LogicalTime theTime, EventRetractionHandle eventRetractionHandle) {
+    public void receiveInteraction( int interactionClass,
+                                    ReceivedInteraction theInteraction,
+                                    byte[] tag,
+                                    LogicalTime theTime,
+                                    EventRetractionHandle eventRetractionHandle )
+    {
 		StringBuilder builder = new StringBuilder("Interaction Received: ");
+		//log("interactionClass: " + interactionClass);
+        if(interactionClass == addPatientToReceptionHandle) {
+            try {
+                int patientNumber = EncodingHelpers.decodeInt(theInteraction.getValue(0));
+                double time =  convertTime(theTime);
+                externalEvents.add(new ExternalEvent(patientNumber, ExternalEvent.EventType.ADDpatientToReception, time));
+                builder.append("ADDpatientToReception , time=" + time + ", patientNumber=" + patientNumber );
+                builder.append( "\n" );
+            } catch (ArrayIndexOutOfBounds ignored) {
 
-		//if (interactionClass == HandlersHelper
-		//		.getInteractionHandleByName("InteractionRoot.Finish")) {
-		//	builder.append("Odebrano interakcję kończącą.");
-		//	running = false;
-		//}
+            }
+        }
+        else if(interactionClass == addDoctorHandle) {
+            try {
+                int personNumber = EncodingHelpers.decodeInt(theInteraction.getValue(0));
+                double time =  convertTime(theTime);
+                externalEvents.add(new ExternalEvent(personNumber, ExternalEvent.EventType.ADDdoctor , time));
+                builder.append( "ADDdoctor , time=" + time );
+                builder.append( "\n" );
+            } catch (ArrayIndexOutOfBounds ignored) {
 
+            }
+        }
+        else if(interactionClass == doctorTreatPatientHandle) {
+            try {
+                int patientNumber = EncodingHelpers.decodeInt(theInteraction.getValue(0));
+                int doctorNumber = EncodingHelpers.decodeInt(theInteraction.getValue(1));
+                double time =  convertTime(theTime);
+                externalEvents.add(new ExternalEvent(patientNumber, doctorNumber, ExternalEvent.EventType.GETdoctor, time));
+                builder.append("GETdoctor , time=" + time + ", patientNumber=" + patientNumber + ", doctorNumber="+doctorNumber);
+                builder.append( "\n" );
+            } catch (ArrayIndexOutOfBounds ignored) {
+
+            }
+        }
+        else if(interactionClass == addPatientToReceptionHandle) {
+            try {
+                int patientNumber = EncodingHelpers.decodeInt(theInteraction.getValue(0));
+                double time =  convertTime(theTime);
+                externalEvents.add(new ExternalEvent(patientNumber, ExternalEvent.EventType.ADDpatientToReception, time));
+                builder.append("ADDpatientToReception , time=" + time + ", patientNumber=" + patientNumber );
+                builder.append( "\n" );
+            } catch (ArrayIndexOutOfBounds ignored) {
+
+            }
+        }
 		log(builder.toString());
 	}
 
@@ -94,44 +145,4 @@ public class StatisticsAmbassador extends NullFederateAmbassador {
 		System.out.println("StatisticsAmbassador: " + message);
 	}
 
-	public void reflectAttributeValues(int theObject,
-			ReflectedAttributes theAttributes, byte[] tag) {
-		reflectAttributeValues(theObject, theAttributes, tag, null, null);
-	}
-
-	public void reflectAttributeValues(int theObject,
-			ReflectedAttributes theAttributes, byte[] tag, LogicalTime theTime,
-			EventRetractionHandle retractionHandle) {
-		StringBuilder builder = new StringBuilder("Reflection for object:");
-
-		builder.append(" handle=" + theObject);
-//		builder.append(", tag=" + EncodingHelpers.decodeString(tag));
-
-		// print the attribute information
-		builder.append(", attributeCount=" + theAttributes.size());
-		builder.append("\n");
-		for (int i = 0; i < theAttributes.size(); i++) {
-			try {
-				// print the attibute handle
-				builder.append("\tattributeHandle=");
-				builder.append(theAttributes.getAttributeHandle(i));
-				// print the attribute value
-				builder.append(", attributeValue=");
-				builder.append(EncodingHelpers.decodeInt(theAttributes
-                        .getValue(i)));
-                builder.append(", time=");
-                builder.append(theTime);
-				builder.append("\n");
-			} catch (ArrayIndexOutOfBounds aioob) {
-				// won't happen
-			}
-		}
-
-		log(builder.toString());
-	}
-
-    @Override
-    public void discoverObjectInstance(int theObject, int theObjectClass, String objectName) throws CouldNotDiscover, ObjectClassNotKnown, FederateInternalError {
-        System.out.println("Pojawil sie nowy obiekt typu SimObject");
-    }
 }

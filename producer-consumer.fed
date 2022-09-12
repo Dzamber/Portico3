@@ -27,6 +27,9 @@
     (class InteractionRoot reliable timestamp
       (class RTIprivate reliable timestamp)
       (class Finish reliable timestamp)
+      (class AddPatientToReception reliable timestamp TestSpace
+        (parameter patientNumber)
+      )
       (class AddPatientQue reliable timestamp TestSpace
         (parameter patientNumber)
       )

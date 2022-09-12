@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 public class ExternalEvent {
 
-    public enum EventType {ADDpatient, GET, ADDdoctor, GETdoctor}
+    public enum EventType {ADDpatientToQue, GET, ADDdoctor, GETdoctor, ADDpatientToReception}
 
     private int personNumber;
     private int doctorNumber;

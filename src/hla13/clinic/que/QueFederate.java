@@ -13,7 +13,8 @@ import java.io.File;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.Random;
+
+import static hla13.clinic.ConstClass.maxSimulationTime;
 
 public class QueFederate {
 
@@ -73,7 +74,8 @@ public class QueFederate {
 
         publishAndSubscribe(); // merged with registerStorageObject(); beacuse there is literally no reason why not
 
-        while (fedamb.running) {
+        while (fedamb.running && (fedamb.federateTime < maxSimulationTime)) {
+            log("test log " + fedamb.federateTime + " " + maxSimulationTime);
             double timeToAdvance = fedamb.federateTime + timeStep;
             advanceTime(timeToAdvance);
 
@@ -82,7 +84,7 @@ public class QueFederate {
                 for(ExternalEvent externalEvent : fedamb.externalEvents) {
                     fedamb.federateTime = externalEvent.getTime();
                     switch (externalEvent.getEventType()) {
-                        case ADDpatient:
+                        case ADDpatientToReception:
                             log(" ADDpatient");
                             this.addPatientQue(externalEvent.getPersonNumber());
                             break;
@@ -112,10 +114,32 @@ public class QueFederate {
             }
             rtiamb.tick();
         }
+        StringBuilder sb = new StringBuilder();
+        for (Integer s : queArrayListPatients)
+        {
+            sb.append(s);
+            sb.append(", ");
+        }
+        log("Patients which wasn't treated: " + sb.toString());
+
+        rtiamb.resignFederationExecution( ResignAction.NO_ACTION );
+        log( "Resigned from Federation" );
+
+        try
+        {
+            rtiamb.destroyFederationExecution( "ExampleFederation" );
+            log( "Destroyed Federation" );
+        }
+        catch( FederationExecutionDoesNotExist dne )
+        {
+            log( "No need to destroy federation, it doesn't exist" );
+        }
+        catch( FederatesCurrentlyJoined fcj )
+        {
+            log( "Didn't destroy federation, federates still joined" );
+        }
 
     }
-
-
 
     public void addPatientQue(int patientNumber) {
         this.queArrayListPatients.add(patientNumber);

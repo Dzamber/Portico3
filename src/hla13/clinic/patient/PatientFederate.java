@@ -13,13 +13,15 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.util.Random;
 
+import static hla13.clinic.ConstClass.maxSimulationTime;
+
 public class PatientFederate {
 
     public static final String READY_TO_RUN = "ReadyToRun";
 
     private RTIambassador rtiamb;
     private PatientAmbassador fedamb;
-    private final double timeStep           = 10.0;
+    private final double timeStep           = 60.0;
     private int patientHlaHandle;
     static int patientAmountCurrent = 0;
 
@@ -68,19 +70,37 @@ public class PatientFederate {
 
         publishAndSubscribe();
         registerPatientObject();
-        while (fedamb.running) {
-
+        while (fedamb.running && (fedamb.federateTime < maxSimulationTime)) {
             advanceTime(randomTime());
-            log("Current time :" + fedamb.federateTime);
+            log("Adding patient to reception, current time :" + fedamb.federateTime);
             sendInteraction(fedamb.federateTime + fedamb.federateLookahead);
             rtiamb.tick();
         }
+        int classHandle = rtiamb.getObjectClassHandle("ObjectRoot.Patient");
+        rtiamb.unpublishObjectClass(classHandle);
+        rtiamb.resignFederationExecution( ResignAction.NO_ACTION );
+        log( "Resigned from Federation" );
 
+        try
+        {
+            rtiamb.destroyFederationExecution( "ExampleFederation" );
+            log( "Destroyed Federation" );
+        }
+        catch( FederationExecutionDoesNotExist dne )
+        {
+            log( "No need to destroy federation, it doesn't exist" );
+        }
+        catch( FederatesCurrentlyJoined fcj )
+        {
+            log( "Didn't destroy federation, federates still joined" );
+        }
     }
 
     private double randomTime() {
         Random r = new Random();
-        return timeStep +(4 * r.nextDouble());
+        double minimalTimeForPatientToCame = 60.0; //1 minuta
+        double maximalTimeForPatientToCame = 600.0; //10 minut
+        return r.nextDouble()*(maximalTimeForPatientToCame-minimalTimeForPatientToCame+1)+minimalTimeForPatientToCame;
     }
 
 
@@ -134,7 +154,7 @@ public class PatientFederate {
                 RtiFactoryFactory.getRtiFactory().createSuppliedParameters();
         byte[] quantity = EncodingHelpers.encodeInt(patientAmountCurrent);
         patientAmountCurrent++;
-        int interactionHandle = rtiamb.getInteractionClassHandle("InteractionRoot.AddPatientQue");
+        int interactionHandle = rtiamb.getInteractionClassHandle("InteractionRoot.AddPatientToReception");
 
         int quantityHandle = rtiamb.getParameterHandle( "patientNumber", interactionHandle );
         LogicalTime time = convertTime( timeStep );
@@ -145,7 +165,7 @@ public class PatientFederate {
     }
 
     private void publishAndSubscribe() throws RTIexception {
-        int addProductHandle = rtiamb.getInteractionClassHandle( "InteractionRoot.AddPatientQue" );
+        int addToReceptionHandle = rtiamb.getInteractionClassHandle( "InteractionRoot.AddPatientToReception" );
         int classHandle = rtiamb.getObjectClassHandle("ObjectRoot.Patient");
         int patientNumber    = rtiamb.getAttributeHandle( "patientNumber", classHandle );
 
@@ -157,7 +177,7 @@ public class PatientFederate {
 
         classHandle = rtiamb.getObjectClassHandle("ObjectRoot.Patient");
         this.patientHlaHandle = rtiamb.registerObjectInstance(classHandle);
-        rtiamb.publishInteractionClass(addProductHandle);
+        rtiamb.publishInteractionClass(addToReceptionHandle);
     }
 
     private void advanceTime( double timestep ) throws RTIexception
