@@ -1,0 +1,176 @@
+{
+  "id": "wfrp4e-core",
+  "name": "wfrp4e-core",
+  "title": "WFRP4e - Core Content Module - PL",
+  "description": "Official Core Rulebook content for the Warhammer Fantasy 4th Edition System. Includes all the tables, rules, bestiary, and lore you need to immerse your players into the perilous world of Warhammer.",
+  "version": "3.0.1",
+  "authors": [
+    {
+      "name": "Moo Man",
+      "email": "russellt@cubicle7games.com",
+      "discord": "Moo Man#7518"
+    },
+    {
+      "name": "Published by Cubicle 7",
+      "url": "https://cubicle7games.com",
+      "email": "info@cubicle7games.com"
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "wfrp4e",
+        "type": "system",
+        "manifest": "https://github.com/moo-man/WFRP4e-FoundryVTT/releases/latest/download/system.json"
+      }
+    ]
+  },
+  "scripts": [
+    "wfrp4e.js",
+    "initialization.js"
+  ],
+  "styles": [
+    "styles.css"
+  ],
+  "packs": [
+    {
+      "name": "bestiary",
+      "label": "Bestiariusz",
+      "system": "wfrp4e",
+      "path": "./packs/bestiary.db",
+      "type": "Actor"
+    },
+    {
+      "name": "careers",
+      "label": "Profesje",
+      "system": "wfrp4e",
+      "path": "./packs/careers.db",
+      "type": "Item"
+    },
+    {
+      "name": "criticals",
+      "label": "Rany Krytyczne",
+      "system": "wfrp4e",
+      "path": "./packs/criticals.db",
+      "type": "Item"
+    },
+    {
+      "name": "skills",
+      "label": "Umiejętności",
+      "system": "wfrp4e",
+      "path": "./packs/skills.db",
+      "type": "Item"
+    },
+    {
+      "name": "talents",
+      "label": "Talenty",
+      "system": "wfrp4e",
+      "path": "./packs/talents.db",
+      "type": "Item"
+    },
+    {
+      "name": "traits",
+      "label": "Cechy",
+      "system": "wfrp4e",
+      "path": "./packs/traits.db",
+      "type": "Item"
+    },
+    {
+      "name": "psychologies",
+      "label": "Psychologia",
+      "path": "./packs/psychologies.db",
+      "type": "Item",
+      "system": "wfrp4e"
+    },
+    {
+      "name": "mutations",
+      "label": "Mutacje",
+      "path": "./packs/mutations.db",
+      "type": "Item",
+      "system": "wfrp4e"
+    },
+    {
+      "name": "injuries",
+      "label": "Urazy",
+      "path": "./packs/injuries.db",
+      "type": "Item",
+      "system": "wfrp4e"
+    },
+    {
+      "name": "diseases",
+      "label": "Choroby",
+      "path": "./packs/diseases.db",
+      "type": "Item",
+      "system": "wfrp4e"
+    },
+    {
+      "name": "spells",
+      "label": "Zaklęcia",
+      "path": "./packs/spells.db",
+      "type": "Item",
+      "system": "wfrp4e"
+    },
+    {
+      "name": "prayers",
+      "label": "Modlitwy",
+      "path": "./packs/prayers.db",
+      "type": "Item",
+      "system": "wfrp4e"
+    },
+    {
+      "name": "trappings",
+      "label": "Wyposażenie",
+      "path": "./packs/trappings.db",
+      "type": "Item",
+      "system": "wfrp4e"
+    },
+    {
+      "name": "journal-entries",
+      "label": "Journals (Core)",
+      "path": "./packs/journal-entries.db",
+      "type": "JournalEntry",
+      "system": "wfrp4e"
+    },
+    {
+      "name": "maps",
+      "label": "Scenes (Core)",
+      "path": "./packs/maps.db",
+      "type": "Scene",
+      "system": "wfrp4e"
+    },
+    {
+      "label": "Tabele (Standardowe)",
+      "type": "RollTable",
+      "name": "tables",
+      "path": "packs/tables.db",
+      "system": "wfrp4e"
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "pl",
+      "name": "Polski",
+      "path": "lang/pl.json"
+    }
+  ],
+  "flags": {
+    "initializationPacks": [
+      "wfrp4e-core.journal-entries",
+      "wfrp4e-core.maps",
+      "wfrp4e-core.tables"
+    ]
+  },
+  "minimumCoreVersion": "10",
+  "compatibleCoreVersion": 10,
+  "compatibility": {
+    "minimum": 10,
+    "verified": 10,
+    "maximum": 10
+  },
+  "download":"https://drive.google.com/uc?export=download&id=161GCOdc2Up2S5KUtTNihKKk_MYKDzhgQ"
+}
