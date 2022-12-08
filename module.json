@@ -1,0 +1,177 @@
+{
+  "id": "wfrp4e-core",
+  "name": "wfrp4e-core",
+  "title": "WFRP4e - Core Content Module - PL",
+  "description": "Official Core Rulebook content for the Warhammer Fantasy 4th Edition System. Includes all the tables, rules, bestiary, and lore you need to immerse your players into the perilous world of Warhammer.",
+  "version": "3.0.1",
+  "authors": [
+    {
+      "name": "Moo Man",
+      "email": "russellt@cubicle7games.com",
+      "discord": "Moo Man#7518"
+    },
+    {
+      "name": "Published by Cubicle 7",
+      "url": "https://cubicle7games.com",
+      "email": "info@cubicle7games.com"
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "wfrp4e",
+        "type": "system",
+        "manifest": "https://github.com/moo-man/WFRP4e-FoundryVTT/releases/latest/download/system.json"
+      }
+    ]
+  },
+  "scripts": [
+    "wfrp4e.js",
+    "initialization.js"
+  ],
+  "styles": [
+    "styles.css"
+  ],
+  "packs": [
+    {
+      "name": "bestiary",
+      "label": "Bestiariusz",
+      "system": "wfrp4e",
+      "path": "./packs/bestiary.db",
+      "type": "Actor"
+    },
+    {
+      "name": "careers",
+      "label": "Profesje",
+      "system": "wfrp4e",
+      "path": "./packs/careers.db",
+      "type": "Item"
+    },
+    {
+      "name": "criticals",
+      "label": "Rany Krytyczne",
+      "system": "wfrp4e",
+      "path": "./packs/criticals.db",
+      "type": "Item"
+    },
+    {
+      "name": "skills",
+      "label": "Umiejętności",
+      "system": "wfrp4e",
+      "path": "./packs/skills.db",
+      "type": "Item"
+    },
+    {
+      "name": "talents",
+      "label": "Talenty",
+      "system": "wfrp4e",
+      "path": "./packs/talents.db",
+      "type": "Item"
+    },
+    {
+      "name": "traits",
+      "label": "Cechy",
+      "system": "wfrp4e",
+      "path": "./packs/traits.db",
+      "type": "Item"
+    },
+    {
+      "name": "psychologies",
+      "label": "Psychologia",
+      "path": "./packs/psychologies.db",
+      "type": "Item",
+      "system": "wfrp4e"
+    },
+    {
+      "name": "mutations",
+      "label": "Mutacje",
+      "path": "./packs/mutations.db",
+      "type": "Item",
+      "system": "wfrp4e"
+    },
+    {
+      "name": "injuries",
+      "label": "Urazy",
+      "path": "./packs/injuries.db",
+      "type": "Item",
+      "system": "wfrp4e"
+    },
+    {
+      "name": "diseases",
+      "label": "Choroby",
+      "path": "./packs/diseases.db",
+      "type": "Item",
+      "system": "wfrp4e"
+    },
+    {
+      "name": "spells",
+      "label": "Zaklęcia",
+      "path": "./packs/spells.db",
+      "type": "Item",
+      "system": "wfrp4e"
+    },
+    {
+      "name": "prayers",
+      "label": "Modlitwy",
+      "path": "./packs/prayers.db",
+      "type": "Item",
+      "system": "wfrp4e"
+    },
+    {
+      "name": "trappings",
+      "label": "Wyposażenie",
+      "path": "./packs/trappings.db",
+      "type": "Item",
+      "system": "wfrp4e"
+    },
+    {
+      "name": "journal-entries",
+      "label": "Journals (Core)",
+      "path": "./packs/journal-entries.db",
+      "type": "JournalEntry",
+      "system": "wfrp4e"
+    },
+    {
+      "name": "maps",
+      "label": "Scenes (Core)",
+      "path": "./packs/maps.db",
+      "type": "Scene",
+      "system": "wfrp4e"
+    },
+    {
+      "label": "Tabele (Standardowe)",
+      "type": "RollTable",
+      "name": "tables",
+      "path": "packs/tables.db",
+      "system": "wfrp4e"
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "pl",
+      "name": "Polski",
+      "path": "lang/pl.json"
+    }
+  ],
+  "flags": {
+    "initializationPacks": [
+      "wfrp4e-core.journal-entries",
+      "wfrp4e-core.maps",
+      "wfrp4e-core.tables"
+    ]
+  },
+  "minimumCoreVersion": "10",
+  "compatibleCoreVersion": 10,
+  "compatibility": {
+    "minimum": 10,
+    "verified": 10,
+    "maximum": 10
+  },
+  "download":"https://doc-0o-20-docs.googleusercontent.com/docs/securesc/h26nf16r56eg2t4og0toaelurmej1a5m/182cosphe6osq90jnvjtqji1n1ipk1cg/1670536950000/14107174186164438373/14107174186164438373/161GCOdc2Up2S5KUtTNihKKk_MYKDzhgQ?e=download&ax=AEKYgyTHzng2OBnyFqTtgEndbQ0RG4atUG8nfBIaU2tWeDG4hp3cBJx18glQ37MWmADmQIreUao-hSNpo45gZVIsDLuwJUR676OqROI12HJ_oXjbUMVCNvaNHhfFRk63AfFE__ph9X-xmSj_sATTCWedNyDMtzadf3nOgau0GHQ7XQU4QHKFr5O7uQFCbiOABxeYnWRUJk7JnHUva9kn2rrW8qpkJ3HPRzphAv37By2U4QDNLMEwvpZFknryZLqg_DI2rJ1awsXYmdzQJj8k0VTTOUoDllqxzDXXC6nGPht6HOBTabaPcxEelcMDE-KWBsXQ85jGAdmm_Iam-brgbdzWUXFEkPvkeeV0a6dK87HTeET6QAJExtqQz-iOTz8QT4KGGTcCTPJE6cYqSSY6aThrvuXeRQw4WwBxyj5Jjgp1Of8HupQX8u1-KywS8oWqvp5qzfbAKnUAUAZ-_NkFOQckr_UmGhHiOg4gCgQ2ZMGdQsYyaZ4MCNXoLOZzVDwT1_5PNwGcHkmdekZeRW6Vo51teeck6r-FpmggN962Vp0oEh87zvRl71DGsdcQZhVZZgWsJcU7peQcYimbgAJvy54C-4Y0AGkf7PrvQPYTgJ3psKUFCzb9kaTrzVd5vznsWNbPeyZWnQydTNosyhNuF9tZqa-ck6zN4TlgTbC5GGjVNFMzDkIGXpaxPvgDkDA6Ulog_IcANDwz4XUt22MKQmiJ79QEhQ5Y3oZoTbY2pxm_AHrTD_0qfz3V6QMdsjP-Zf7e4zg_JLPzDBdZRhfhslAPJqaJ33uNcOTQlP37CEjw9rgjN47OuXKNly0OPfcP161ijraSv5cKPiaA3AHDsohVLNoIK7i6gDmKFQEwg7Nk8L2IN98Z-nInh-2APo7gnmXdu5g6FmusPv-OCpklS6Ql5FIqc-M7CpJEIGW-mv-3BYk1cjBRMRZGgdnNcm0Zlrl2KVAySrfrfcc93A&uuid=4689e1db-3e89-4bb6-a171-3775fd9c3920&authuser=1&nonce=mab05a0r1bgls&user=14107174186164438373&hash=57f72m2blfft1obv651d8oh3jeva5tmj"
+  "url": "https://foundryvtt.com/packages/wfrp4e-core/"
+}
